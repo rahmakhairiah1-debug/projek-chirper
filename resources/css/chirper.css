@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+    --chirper-accent: #38bdf8;
+    --chirper-purple: #818cf8;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0c4a6e 100%) !important;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff !important;
+}
+
+/* NAVBAR */
+.navbar {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.navbar .btn-ghost {
+    color: #fff !important;
+    font-family: 'Sora', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.navbar .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.navbar .btn-primary {
+    background: linear-gradient(135deg, var(--chirper-accent), var(--chirper-purple)) !important;
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35) !important;
+}
+
+.navbar .btn-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.45) !important;
+}
+
+/* MAIN */
+main {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -80px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+main::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.12) 0%, transparent 70%);
+    bottom: -60px;
+    left: -60px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: none !important;
+}
+
+.card-body h1 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    background: linear-gradient(90deg, var(--chirper-accent), var(--chirper-purple));
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.card-body p {
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+/* FOOTER */
+.footer {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+}
