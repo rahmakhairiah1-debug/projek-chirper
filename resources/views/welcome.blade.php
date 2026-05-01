@@ -9,73 +9,49 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-
+        
        <style>
     @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
-
-    body {
-        font-family: 'DM Sans', sans-serif !important;
-        background: linear-gradient(135deg, #010101 0%, #2d0a40 50%, #0a1252 100%) !important;
-        min-height: 100vh;
-        color: #fff !important;
+    body { font-family: 'DM Sans', sans-serif; background: #faf7f4; }
+    .navbar-custom { background: #fff8f3; border-bottom: 1px solid #e8ddd4; }
+    .card-chirp {
+        border: 1px solid #e8ddd4;
+        border-radius: 12px;
+        transition: box-shadow 0.2s;
     }
-
-    .navbar {
-        background: rgba(5, 1, 1, 0.06) !important;
-        border-bottom: 2px solid #38b5f8b0 !important;
+    .card-chirp:hover { box-shadow: 0 4px 12px rgba(139,94,60,0.08); }
+    .author-name {
+        color: #8B5E3C;
+        font-weight: 600;
     }
-
-    .navbar .btn-ghost {
-        color: #ffffff !important;
-        font-family: 'Sora', sans-serif !important;
-        font-weight: 700 !important;
-        font-size: 20px !important;
-        text-shadow: 0 0 12px rgba(56,189,248,0.6) !important;
+    .btn-signin {
+        border: 1.5px solid #8B5E3C;
+        color: #8B5E3C;
+        border-radius: 8px;
+        padding: 4px 14px;
+        font-size: 13px;
+        background: transparent;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
     }
-
-    .navbar .btn-ghost:hover {
-        background: rgba(56,189,248,0.1) !important;
+    .btn-signin:hover { background: #8B5E3C; color: white; }
+    .btn-signup {
+        border: 1.5px solid #8B5E3C;
+        background: #8B5E3C;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 4px 14px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.2s;
     }
-
-    .navbar .btn-primary {
-        background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
-        border: none !important;
-        color: #ffffff !important;
-        font-weight: 700 !important;
-        box-shadow: 0 4px 15px rgba(56,189,248,0.5) !important;
-    }
-
-    .card {
-        background: rgba(255, 255, 255, 0.08) !important;
-        border: 2px solid rgba(56, 189, 248, 0.4) !important;
-        border-radius: 20px !important;
-        backdrop-filter: blur(20px) !important;
-        box-shadow: 0 8px 32px rgba(56, 189, 248, 0.15) !important;
-    }
-
-    .card-body h1 {
-        font-family: 'Sora', sans-serif !important;
-        font-size: 36px !important;
-        font-weight: 700 !important;
-        color: #ffffff !important;
-        -webkit-text-fill-color: unset !important;
-        text-shadow: 0 2px 10px rgba(56,189,248,0.4) !important;
-        letter-spacing: -0.5px !important;
-    }
-
-    .card-body p {
-        color: #fafbfd !important;
-        font-size: 16px !important;
-        line-height: 1.7 !important;
-        margin-top: 0.5rem !important;
-    }
-
-    .footer {
-        background: hsla(260, 66%, 8%, 0.64) !important;
-        border-top: 1px solid rgba(56, 181, 248, 0.82) !important;
-        color: #f7faff !important;
+    .btn-signup:hover { background: #6e4a2e; border-color: #6e4a2e; }
+    .header-section {
+        background: #fff8f3;
+        border-bottom: 1px solid #e8ddd4;
     }
 </style>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
@@ -91,18 +67,20 @@
         </nav>
 
         <main class="flex-1 container mx-auto px-4 py-8">
-            <div class="max-w-2xl mx-auto">
-                <div class="card bg-base-100 shadow mt-8">
-                    <div class="card-body">
-                        <div>
-                            <h1 class="text-3xl font-bold"> Welcome to Chirper!</h1>
-                            <p>This is your brand new Laravel app. Time to make it sing (or chirp)!</p>
-                            <p class="mt-2 text-sm text-gray-600">Now this is live on the internet! 🎉</p>
-                        </div>
+    <div class="max-w-2xl mx-auto">
+        @foreach ($chirps as $chirp)
+            <div class="card bg-base-100 shadow mt-8">
+                <div class="card-body">
+                    <div>
+                        <div class="font-semibold">{{ $chirp['author'] }}</div>
+                        <div class="mt-1">{{ $chirp['message'] }}</div>
+                        <div class="text-sm text-gray-500 mt-2">{{ $chirp['time'] }}</div>
                     </div>
                 </div>
             </div>
-        </main>
+        @endforeach
+    </div>
+</main>
 
         <footer class="footer footer-center p-5 bg-base-300 text-base-content text-xs">
             <div>
